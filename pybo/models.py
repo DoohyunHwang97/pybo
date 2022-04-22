@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 
 # Create your models here.
 class Question(models.Model):
@@ -17,3 +18,8 @@ class Answer(models.Model):
     subject = models.ForeignKey(Question, on_delete=models.CASCADE)
     content = models.TextField()
     create_date = models.DateTimeField()
+
+class QuestionForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = ["subject", "content"]
